@@ -1,73 +1,116 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+# Web3 NFC Wallet Backend
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+> A NestJS-based backend powering an NFC-enabled Ethereum wallet.  
+> Designed to simplify blockchain interactions for a Flutter frontend using MetaMask and Etherscan.
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+---
 
-## Description
+## 🚀 Overview
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+This project is the backend API for a mobile crypto wallet that enables **NFC-based Ethereum transactions**.  
+Built with **NestJS** and **TypeScript**, the backend communicates with **MetaMask** and **Etherscan APIs** to:
 
-## Installation
+- Fetch wallet balances
+- Retrieve transaction history
+- Estimate gas prices
+- Initiate transactions
 
-```bash
-$ npm install
+No database is used—this backend interacts **directly with the Ethereum blockchain** to ensure real-time data accuracy and decentralized architecture.
+
+---
+
+## 🔧 Tech Stack
+
+- **Node.js + TypeScript**
+- **NestJS** – Scalable backend framework
+- **Ethers.js** – Ethereum blockchain interaction
+- **MetaMask** – Wallet integration
+- **Etherscan API** – Transaction and balance data
+
+
+---
+
+## 📱 Real-World Use Case
+
+The backend is built for a **Flutter-based mobile wallet** that allows users to:
+
+- Tap an NFC card to sign/authorize Ethereum transactions
+- View live ETH balance and transaction history
+- Estimate gas before sending
+- Interact with smart contracts via MetaMask
+
+This design ensures the **Flutter frontend remains lightweight** while delegating complex blockchain interactions to this service.
+
+---
+
+## 🔄 API Capabilities
+
+| Endpoint                         | Description                          |
+|----------------------------------|--------------------------------------|
+| `GET /balance/:address`          | Fetch ETH balance for wallet address |
+| `GET /transactions/:address`     | Retrieve transaction history         |
+| `GET /gas-price`                 | Get current gas prices               |
+| `POST /send-transaction`         | Initiate/send ETH transaction        |
+
+*(All routes and params are illustrative—see code for implementation details.)*
+
+---
+## 🔐 Environment Setup
+
+To run this project, you'll need to create a `secret.json` file in the root directory with your API keys:
+
+```json
+{
+  "metamask_api_key": "YOUR_INFURA_OR_ALCHEMY_KEY",
+  "etherscan_api_key": "YOUR_ETHERSCAN_KEY"
+}
 ```
+---
+## 🧪 Running Locally
 
-## Running the app
+### Install dependencies
 
 ```bash
+npm install
+
 # development
-$ npm run start
+npm run start
 
 # watch mode
-$ npm run start:dev
+npm run start:dev
 
-# production mode
-$ npm run start:prod
+# production
+npm run start:prod
 ```
 
-## Test
+🧠 What I Learned
 
-```bash
-# unit tests
-$ npm run test
+How to structure a modular backend with NestJS
 
-# e2e tests
-$ npm run test:e2e
+Using Ethers.js for secure blockchain interactions
 
-# test coverage
-$ npm run test:cov
-```
+Designing API-first backend for frontend simplicity
 
-## Support
+Writing clean, testable code with TypeScript
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+Architecting a no-DB solution for decentralized apps
 
-## Stay in touch
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+📌 Future Enhancements
 
-## License
+Add support for other EVM chains (e.g., Polygon, BSC)
 
-Nest is [MIT licensed](LICENSE).
+Secure API with rate limiting and auth
+
+Add Swagger/OpenAPI documentation
+
+Extend support for ERC20 tokens
+
+
+🧑‍💻 Author
+
+Harshith N Rao | 
+Software Developer | 
+https://github.com/harshithnrao
+
+⚠️ This project is a work-in-progress. Actively seeking feedback and collaboration.
